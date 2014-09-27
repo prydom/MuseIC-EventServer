@@ -2,7 +2,7 @@
 """MuseIC EventServer Demo Runner"""
 import sys
 
-from utils import event_provider
+from MuseEventServer.utils import event_provider
 
 __author__ = "Jordan Pryde"
 __copyright__ = "Copyright 2014, Jordan Pryde"
