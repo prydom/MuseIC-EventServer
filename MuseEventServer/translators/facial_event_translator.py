@@ -26,7 +26,7 @@ class FacialEventTranslator(EventTranslator):
         self.last_clench_time = None
 
         # Subscribe to events
-        for k in msg_keys_handled:
+        for k in self.msg_keys_handled:
             self.subscribe(k)
 
     def publish(self, key, payload):

@@ -3,6 +3,9 @@
 import sys
 
 from MuseEventServer.utils import event_provider
+from MuseEventServer.subscribers.youtube_player_remote import YoutubePlayerRemote
+from MuseEventServer.publishers.osc_event_publisher import OSCEventPublisher
+from MuseEventServer.translators.facial_event_translator import FacialEventTranslator
 
 __author__ = "Jordan Pryde"
 __copyright__ = "Copyright 2014, Jordan Pryde"
@@ -24,8 +27,12 @@ if __name__ == '__main__':
         sys.exit("please specify a port or socket path")
 
     msg_center = event_provider.EventProvider()
-    app = 
+    osc_receiver = OSCEventPublisher(msg_center, port=sys.argv[1])
+    fe_trans = FacialEventTranslator(msg_center)
+    
+    app = YoutubePlayerRemote(msg_center)  
+
     try:
-        app.run()
+        osc_receiver.run()
     except KeyboardInterrupt:
-        del app
+        del osc_receiver

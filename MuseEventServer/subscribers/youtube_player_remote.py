@@ -5,7 +5,7 @@ from ..utils.abstract_pub_sub_trans import EventSubscriber
 
 class YoutubePlayerRemote(EventSubscriber):
 
-    def __init__(self, msg_center, host, port, secure):
+    def __init__(self, msg_center, host=None, port=None, secure=False):
         super(YoutubePlayerRemote, self).__init__(msg_center)
 
         self.host = host or '192.168.59.132'
@@ -16,7 +16,7 @@ class YoutubePlayerRemote(EventSubscriber):
             self.base_url = "https://"
         else:
             self.base_url = "http://"
-        self.base_url += host + ":" + str(port)
+        self.base_url += self.host + ":" + str(self.port)
         self.http = urllib3.PoolManager()
 
         self._get_subscriptions()

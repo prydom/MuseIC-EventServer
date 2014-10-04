@@ -16,7 +16,7 @@ class EventProvider:
         self.msg_queue.append(msg)
 
     def subscribe(self, key, subcriber):
-        if msg_key not in self.subcribers:
+        if key not in self.subcribers:
             self.subcribers[key] = []
             self.subcribers[key].append(subcriber)
         else:

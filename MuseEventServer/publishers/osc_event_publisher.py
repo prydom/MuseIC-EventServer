@@ -28,7 +28,7 @@ class OSCEventPublisher(EventPublisher):
         for t, a in zip(types, args):
             self.provider.notify(path_alias(path), OSCEvent(t, a, path))
 
-    def __init__(self, port = None, msg_center):
+    def __init__(self, msg_center, port = 5001):
         super(OSCEventPublisher, self).__init__(msg_center)
 
         # create server object
