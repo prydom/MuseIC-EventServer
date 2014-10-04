@@ -60,8 +60,6 @@ class FacialEventTranslator(EventTranslator):
                 elif value == 0 and self.blink_in_progress:
                     self.blink_in_progress = False
                     self.blinkEvent(time.time())
-                    print "EVENT: blink!"
-
 
     def clenchEndEvent(self, event_time):
         clench_time = abs( event_time - self.clench_start_time )
